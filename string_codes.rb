@@ -9,18 +9,18 @@ def decode(codes, str, indent = 0)
   single_digit_code = str[0] == '0' ? "" : codes[str[0]]
   double_digit_code = str[1] ? codes[str[0..1]] : nil
 
-  puts  "#{'   '*indent} ----- #{str} -----"
-  puts "#{'   '*indent} #{str[0]}: #{single_digit_code}"
-  puts "#{'   '*indent} #{str[0..1]}: #{double_digit_code}" if double_digit_code
+  puts  "#{' '*indent} ----- #{str} -----"
+  puts "#{' '*indent} #{str[0]}: #{single_digit_code}"
+  puts "#{' '*indent} #{str[0..1]}: #{double_digit_code}" if double_digit_code
 
   if single_digit_code
-    decode(codes, str[1..(str.length - 1)], indent+1).each do |code|
+    decode(codes, str[1..(str.length - 1)], indent+4).each do |code|
       retval << (single_digit_code + code)
     end
   end
 
   if double_digit_code
-    decode(codes, str[2..(str.length - 2)], indent+1).each do |code|
+    decode(codes, str.slice(2, (str.length - 2)), indent+4).each do |code|
       retval << (double_digit_code + code)
     end
   end

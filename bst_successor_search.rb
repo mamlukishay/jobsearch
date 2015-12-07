@@ -1,3 +1,9 @@
+
+def node
+	attraccessor :key, :parent, :left, :right
+end
+
+
 def successor_search(node)
 	if node.right
 		return min_of node.right
